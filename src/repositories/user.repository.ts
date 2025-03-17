@@ -22,6 +22,12 @@ export class UserRepository implements IUserOperations {
     )
   }
 
+  async getByEmail(email: string): Promise<TUserModel | null> {
+    return await Promise.resolve(
+      this.users.find((user) => user.email === email) || null
+    )
+  }
+
   async update(user: User): Promise<TUserModel | null> {
     const index = this.users.findIndex((user) => user.id === user.id)
     if (index === -1) {

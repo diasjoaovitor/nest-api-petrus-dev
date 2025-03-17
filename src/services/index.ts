@@ -1,1 +1,2 @@
-export * from './user/user.service'
+export * from './auth.service'
+export * from './user.service'

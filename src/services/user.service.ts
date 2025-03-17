@@ -1,17 +1,25 @@
 import { Injectable } from '@nestjs/common'
+import { hash } from 'bcrypt'
 
 import { User } from '@/domain'
-import { UserNotFoundError } from '@/errors'
+import { EmailAlreadyExistsError, UserNotFoundError } from '@/errors'
+import { TCreateParams, TUpdateParams } from '@/interfaces'
 import { IUserOperations, TUserModel } from '@/models'
 import { UserRepository } from '@/repositories'
-import { TCreateParams, TUpdateParams } from '@/shared/interfaces'
+
+const SALT_ROUNDS = 10
 
 @Injectable()
-export class UserService implements IUserOperations {
+export class UserService implements Omit<IUserOperations, 'getByEmail'> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async create(params: TCreateParams<TUserModel>): Promise<TUserModel> {
-    const user = new User(params)
+    const existingUser = await this.userRepository.getByEmail(params.email)
+    if (existingUser) {
+      throw new EmailAlreadyExistsError()
+    }
+    const passwordHash = await hash(params.password, SALT_ROUNDS)
+    const user = new User({ ...params, password: passwordHash })
     const createdUser = await this.userRepository.create(user)
     return createdUser
   }

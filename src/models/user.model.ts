@@ -1,4 +1,4 @@
-import { ICrudOperations } from '@/shared/interfaces'
+import { ICrudOperations } from '@/interfaces'
 
 export type TUserModel = {
   id: string
@@ -9,4 +9,6 @@ export type TUserModel = {
   updatedAt: Date
 }
 
-export interface IUserOperations extends ICrudOperations<TUserModel> {}
+export interface IUserOperations extends ICrudOperations<TUserModel> {
+  getByEmail(email: string): Promise<TUserModel | null>
+}

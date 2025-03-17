@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common'
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
+import { Public } from '@/decorators'
 import { UserService } from '@/services'
 
 import {
@@ -32,6 +33,7 @@ interface IUserController {
 export class UserController implements IUserController {
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Post()
   @ApiOperation({ summary: 'Create a new user' })
   @ApiResponse({
