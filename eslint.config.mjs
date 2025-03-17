@@ -39,6 +39,8 @@ export default tseslint.config(
           allowInterfaces: 'with-single-extends'
         }
       ],
+      '@typescript-eslint/no-redundant-type-constituents': 'error',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error'
     }
