@@ -8,12 +8,14 @@
     "isolatedModules": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "removeComments": true,
     "sourceMap": true,
     "newLine": "lf",
-    "outDir": "dist/src",
+    "outDir": "dist",
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
