@@ -71,3 +71,39 @@ pnpm test
 pnpm test:e2e
 pnpm start
 ```
+
+## API
+
+Instalação dos módulos [@nestjs/config](https://www.npmjs.com/package/@nestjs/config), [@nestjs/swagger](https://www.npmjs.com/package/@nestjs/swagger), [@nestjs/jwt'](https://www.npmjs.com/package/@nestjs/jwt), [@nestjs/platform-fastify](https://www.npmjs.com/package/@nestjs/platform-fastify) [fastify](https://www.npmjs.com/package/fastify), [@fastify/static](https://www.npmjs.com/package/@fastify/static) ,[class-validator](https://www.npmjs.com/package/class-validator), [class-transformer](https://www.npmjs.com/package/class-transformer), [uuid](https://www.npmjs.com/package/uuid), [bcrypt](https://www.npmjs.com/package/bcrypt), [@types/bcrypt](https://www.npmjs.com/package/@types/bcrypt):
+
+```sh
+pnpm add @nestjs/config @nestjs/swagger @nestjs/jwt @nestjs/platform-fastify fastify @fastify/static class-validator class-transformer uuid bcrypt
+
+pnpm add -D @types/bcrypt
+```
+
+Criação dos arquivos:
+
+- constants/auth.ts
+- controllers/dto/authenticate-user-request.ts
+- controllers/dto/authenticate-user-response.ts
+- controllers/dto/create-user-request.ts
+- controllers/dto/delete-user-response.ts
+- controllers/dto/update-user-request.ts
+- controllers/dto/user-response.ts
+- controllers/dto/index.ts
+- controllers/auth.controller.ts
+- controllers/user.controller.ts
+- decorators/public.decorators.ts
+- domain/user.domain.ts
+- erros/auth.error.ts
+- guard/auth.guard.ts
+- repositories/user.repository.ts
+- services/auth.service.ts
+- services/user.service.ts
+- types/auth.ts
+- types/crud-operations.ts
+- types/user.ts
+- utils/jwt-secret.ts
+
+Atualiza `app.module.ts` e `main.ts`
